@@ -1,12 +1,13 @@
 pipeline {
     agent any
     stages {
-        stage('build') {
+        stage('clone mvn repo') {
             steps {
-                sh '''
-                    cd project 
-                    mvn package .
-                '''
+                git branch: 'master',
+                url: 'https://github.com/jabedhasan21/java-hello-world-with-maven.git'
+
+                sh "ls -lat"
+                
             }
         }
     }
