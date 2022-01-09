@@ -7,7 +7,7 @@ pipeline {
                 credentialsId: '8ball92',
                 url: 'https://github.com/8ball92/maven-hello-world.git'
                 sh "cd my-app ; ls -la && mvn compile"
-                sh  "ls -la my-app/target/"    
+                sh  "ls -la my-app/"    
                 cleanWs deleteDirs: true, patterns: [[pattern: '', type: 'EXCLUDE']]
                 
                 
