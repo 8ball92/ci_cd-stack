@@ -3,10 +3,10 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh '
-                    cd project \
-                    mvn package
-                    '
+                sh '''
+                    cd project 
+                    mvn package .
+                '''
             }
         }
     }
