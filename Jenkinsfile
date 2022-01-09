@@ -8,7 +8,7 @@ pipeline {
                 url: 'https://github.com/8ball92/maven-hello-world.git'
                 sh "cd my-app ; ls -la && mvn compile"
                     
-                cleanWs deleteDirs: true, patterns: [[pattern: '', type: 'EXCLUDE']]
+                
         
                 
             }
@@ -16,7 +16,7 @@ pipeline {
         stage('Building image') {
             steps {
                 sh "pwd && ls -la"
-        
+                cleanWs deleteDirs: true, patterns: [[pattern: '', type: 'EXCLUDE']]    
                 
             }
         }
