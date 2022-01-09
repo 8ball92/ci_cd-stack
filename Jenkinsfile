@@ -8,6 +8,8 @@ pipeline {
                 url: 'https://github.com/jabedhasan21/java-hello-world-with-maven.git'
 
                 sh "ls -lat"
+                cleanWs deleteDirs: true, patterns: [[pattern: '', type: 'EXCLUDE']]
+                sh "ls -la"
                 
             }
         }
