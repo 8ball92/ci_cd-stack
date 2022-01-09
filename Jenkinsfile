@@ -1,5 +1,5 @@
 pipeline {
-    agent slave-aws
+    agent any
     stages {
         stage('build') {
             steps {
