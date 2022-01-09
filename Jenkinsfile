@@ -1,15 +1,15 @@
 pipeline {
     agent any
     stages {
-        stage('clone mvn repo') {
+        stage('Build') {
             steps {
                 git branch: 'master',
                 credentialsId: '8ball92',
                 url: 'https://github.com/jabedhasan21/java-hello-world-with-maven.git'
-
-                sh "ls -lat"
+                sh "mvn package"
+                sh "ls -la src/main/java/" 
                 cleanWs deleteDirs: true, patterns: [[pattern: '', type: 'EXCLUDE']]
-                sh "ls -la"
+                
                 
             }
         }
