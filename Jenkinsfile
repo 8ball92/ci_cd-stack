@@ -9,7 +9,14 @@ pipeline {
                 sh "cd my-app ; ls -la && mvn compile"
                     
                 cleanWs deleteDirs: true, patterns: [[pattern: '', type: 'EXCLUDE']]
+        
                 
+            }
+        }
+        stage('Building image') {
+            steps {
+                sh "pwd && ls -la"
+        
                 
             }
         }
