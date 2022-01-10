@@ -17,7 +17,7 @@ pipeline {
             steps {
                 print(env.BRANCH)
             
-                cleanWs deleteDirs: true, patterns: [[pattern: '', type: 'EXCLUDE']]    
+                    
                 
             }
         }
@@ -27,7 +27,8 @@ pipeline {
         always {
             script {
                 echo "the end"
-             }
+            }
+            cleanWs deleteDirs: true, patterns: [[pattern: '', type: 'EXCLUDE']]
         }
     }        
 }
