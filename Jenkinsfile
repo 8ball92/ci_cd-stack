@@ -8,8 +8,9 @@ pipeline {
             steps {
                 git branch: 'master',
                 credentialsId: '8ball92',
-                url: 'https://github.com/8ball92/maven-hello-world.git'
-                sh "cd my-app ; ls -la && mvn compile"   
+                url: 'https://github.com/8ball92/java-hello-world-maven.git'
+                // sh "cd my-app ; ls -la && mvn compile"
+                sh "ls -la"   
             }
         }
         stage('Building image') {

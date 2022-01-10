@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "../../.."
+		},
+		{
+			"name": "ci_cd-stack",
+			"path": "."
+		}
+	],
+	"settings": {}
+}
