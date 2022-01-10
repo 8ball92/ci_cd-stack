@@ -30,7 +30,7 @@ pipeline {
         always {
             script {
                 echo "THE END JOB"
-                sh "docker rmi ${env.APP}:${env.TAG_VERSION}"
+                sh "docker rmi gblbjj/${env.APP}:${env.TAG_VERSION}"
                 
             }
             
