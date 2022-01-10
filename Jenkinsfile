@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         ENV_NAME = "${env.BRANCH}"
-        ENV_NAME = "${env.TAG_VERSION}"
+        ENV_TAG = "${env.TAG_VERSION}"
     }
     stages {
         stage('Build mvn packege') {
