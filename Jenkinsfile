@@ -3,7 +3,6 @@ pipeline {
     environment {
 		DOCKERHUB_CREDENTIALS=credentials('dockerhub')
 	}
-
     stages {
         stage('Build mvn packege') {
             steps {
@@ -17,11 +16,7 @@ pipeline {
             steps {
                 sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
                 sh "docker build -t gblbjj/${env.APP}:${env.TAG_VERSION} ."
-                sh "docker push gblbjj/${env.APP}:${env.TAG_VERSION}"
-                
-            
-                    
-                
+                sh "docker push gblbjj/${env.APP}:${env.TAG_VERSION}"    
             }
         }
 
