@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build mvn packege') {
             steps {
-                credentialsId: 'slavbe',
+                credentialsId: 'slave',
                 git branch: "${env.BRANCH}",
                 url: 'git@github.com:8ball92/maven-hello-world.git'
                 
