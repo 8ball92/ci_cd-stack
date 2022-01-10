@@ -16,8 +16,8 @@ pipeline {
         }
         stage('Building image') {
             steps {
-                // sh "docker build -t demo:"${env.TAG_VERSION}" ."
-                sh "ls -la && pwd"
+                sh "docker build -t demo:"${env.TAG_VERSION}" ."
+                // sh "ls -la && pwd"
                 print(env.BRANCH)
                 print(env.TAG_VERSION)
             
