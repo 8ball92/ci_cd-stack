@@ -8,9 +8,10 @@ pipeline {
             steps {
                 git branch: 'master',
                 credentialsId: '8ball92',
-                url: 'https://github.com/8ball92/java-hello-world-maven.git'
-                sh "mvn mvn package"
-                sh "ls -la src/main/java"   
+                url: 'https://github.com/pdurbin/maven-hello-world.git'
+                // sh "mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false"
+                sh "cd my-app ; mvn package " 
+                sh "ls -la"  
             }
         }
         stage('Building image') {
