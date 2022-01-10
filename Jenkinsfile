@@ -9,8 +9,8 @@ pipeline {
                 git branch: 'master',
                 credentialsId: '8ball92',
                 url: 'https://github.com/8ball92/java-hello-world-maven.git'
-                // sh "cd my-app ; ls -la && mvn compile"
-                sh "ls -la"   
+                sh "mvn mvn package"
+                sh "ls -la src/main/java"   
             }
         }
         stage('Building image') {
