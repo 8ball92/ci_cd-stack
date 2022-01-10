@@ -1,9 +1,5 @@
 pipeline {
     agent any
-    // environment {
-    //     ENV_NAME = "${env.BRANCH}"
-    //     ENV_TAG = "${env.TAG_VERSION}"
-    // }
     stages {
         stage('Build mvn packege') {
             steps {
@@ -17,9 +13,7 @@ pipeline {
         stage('Building image') {
             steps {
                 sh "docker build -t ${env.APP}:${env.TAG_VERSION} ."
-                // sh "ls -la && pwd"
-                print(env.BRANCH)
-                print(env.TAG_VERSION)
+                
             
                     
                 
@@ -31,7 +25,9 @@ pipeline {
         always {
             script {
                 echo "THE END JOB"
+                
             }
+            docker rmi ${env.APP}:${env.TAG_VERSION}
             cleanWs deleteDirs: true, patterns: [[pattern: '', type: 'EXCLUDE']]
         }
     }        
