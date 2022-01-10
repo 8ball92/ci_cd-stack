@@ -12,7 +12,7 @@ pipeline {
         stage('Building image') {
             steps {
                 // sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-                sh "docker build -t gblbjj/${env.APP}:${env.TAG_VERSION} ."
+                sh "docker build -t ${env.APP}:${env.TAG_VERSION} ."
                 // sh "docker push gblbjj/${env.APP}:${env.TAG_VERSION}"
                 
             
