@@ -4,7 +4,6 @@ pipeline {
         stage('Build mvn packege') {
             steps {
                 git branch: "${env.BRANCH}",
-                credentialsId: 'github',
                 url: 'https://github.com/8ball92/maven-hello-world.git'
                 
                 sh "mvn package " 
