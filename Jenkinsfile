@@ -25,9 +25,10 @@ pipeline {
         always {
             script {
                 echo "THE END JOB"
+                docker rmi ${env.APP}:${env.TAG_VERSION}
                 
             }
-            docker rmi ${env.APP}:${env.TAG_VERSION}
+            
             cleanWs deleteDirs: true, patterns: [[pattern: '', type: 'EXCLUDE']]
         }
     }        
