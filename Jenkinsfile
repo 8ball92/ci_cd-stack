@@ -21,5 +21,13 @@ pipeline {
                 
             }
         }
+
     }
+    post {
+        always {
+            script {
+                echo "the end"
+             }
+        }
+    }        
 }
