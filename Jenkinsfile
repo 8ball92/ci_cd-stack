@@ -3,9 +3,13 @@ pipeline {
     stages {
         stage('Build mvn packege') {
             steps {
-                git branch: "${env.BRANCH}",
-                url: 'git@github.com:8ball92/maven-hello-world.git'
-                sh "mvn package " 
+                withCredentials([gitUsernamePassword(credentialsId: '8ball92', gitToolName: '8ball92')])
+                {
+
+                    git branch: "${env.BRANCH}",
+                    url: 'git@github.com:8ball92/maven-hello-world.git'
+                }
+                // sh "mvn package " 
                 // sh "java -cp my-app/target/my-app-1.0-SNAPSHOT.jar com.mycompany.app.App"  
             }
         }
