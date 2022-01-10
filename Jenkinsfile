@@ -15,7 +15,7 @@ pipeline {
         }
         stage('Building image') {
             steps {
-                
+                print(env.BRANCH)
             
                 cleanWs deleteDirs: true, patterns: [[pattern: '', type: 'EXCLUDE']]    
                 
