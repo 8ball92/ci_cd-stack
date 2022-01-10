@@ -1,9 +1,9 @@
 pipeline {
     agent any
-    environment {
-        ENV_NAME = "${env.BRANCH}"
-        ENV_TAG = "${env.TAG_VERSION}"
-    }
+    // environment {
+    //     ENV_NAME = "${env.BRANCH}"
+    //     ENV_TAG = "${env.TAG_VERSION}"
+    // }
     stages {
         stage('Build mvn packege') {
             steps {
@@ -16,7 +16,7 @@ pipeline {
         }
         stage('Building image') {
             steps {
-                sh "docker build -t demo:"${env.TAG_VERSION}" ."
+                sh "docker build -t ${env.APP}:${env.TAG_VERSION} ."
                 // sh "ls -la && pwd"
                 print(env.BRANCH)
                 print(env.TAG_VERSION)
