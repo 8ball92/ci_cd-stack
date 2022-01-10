@@ -11,7 +11,7 @@ pipeline {
                 url: 'https://github.com/pdurbin/maven-hello-world.git'
                 // sh "mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false"
                 sh "cd my-app ; mvn package " 
-                sh "ls -la"  
+                sh "java -cp my-app/target/my-app-1.0-SNAPSHOT.jar com.mycompany.app.App"  
             }
         }
         stage('Building image') {
