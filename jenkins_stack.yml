@@ -1,0 +1,31 @@
+version: '3.7'
+services:
+  jenkins:
+    image: jenkins/jenkins:lts-jdk11
+    environment:
+      - JAVA_OPTS=-Djenkins.install.runSetupWizard=false -Dhudson.footerURL=http://jenkins:8080 
+      - JENKINS_USER=data
+      - JENKINS_PASS=80925b13
+    ports:
+      - 8080:8080
+      - 50000:50000
+    volumes:
+      - jenkins_data:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - jenkins-net
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints: [node.platform.os == linux]
+     
+
+volumes:
+  jenkins_data:
+    driver: local
+ 
+networks:
+  jenkins-net:
+    driver: overlay
+    external: true

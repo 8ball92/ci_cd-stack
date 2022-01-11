@@ -1,0 +1,56 @@
+version: '3.2'
+
+services:
+  prometheus:
+    image: prom/prometheus:latest
+    volumes:
+      - ./prometheus/config:/etc/prometheus/
+      - ./prometheus/data:/prometheus
+    networks:
+      - jenkins-net 
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      # - '-storage.local.path=/prometheus'
+      # - '-alertmanager.url=http://alertmanager:9093'
+    ports:
+      - 9090:9090
+
+  # node-exporter:
+  #   image: prom/node-exporter:latest
+  #   expose:
+  #     - 9100
+
+  # cadvisor:
+  #   image: google/cadvisor:latest
+  #   volumes:
+  #     - /:/rootfs:ro
+  #     - /var/run:/var/run:rw
+  #     - /sys:/sys:ro
+  #     - /var/lib/docker/:/var/lib/docker:ro
+  #   expose:
+  #     - 8080
+  
+  # grafana:
+  #   image: grafana/grafana:latest
+  #   links:
+  #     - prometheus:prometheus
+  #   volumes:
+  #     - ./data/grafana:/var/lib/grafana
+  #   environment:
+  #     - GF_SECURITY_ADMIN_PASSWORD=MYPASSWORT
+  #     - GF_USERS_ALLOW_SIGN_UP=false
+  #     - GF_SERVER_DOMAIN=myrul.com
+  #     - GF_SMTP_ENABLED=true
+  #     - GF_SMTP_HOST=smtp.gmail.com:587
+  #     - GF_SMTP_USER=data
+  #     - GF_SMTP_PASSWORD=80925b13
+  #     - GF_SMTP_FROM_ADDRESS=@gmail.com  
+
+# volumes:
+#   jenkins_data:
+#     driver: local
+ 
+networks:
+  jenkins-net:
+    driver: overlay
+    external: true        
